@@ -1,0 +1,55 @@
+<template>
+    <template if:true={showDelete}>
+        <lightning-button variant="brand" name="storeEntry" label="Delete" onclick={removeEntry} class="slds-text-align_center slds-float_right slds-m-left_large"></lightning-button>
+    <br/> <br/>
+    </template>
+    
+    <lightning-record-edit-form id="recordViewForm"
+                object-api-name="AuthLocationAccessSchedule">
+        <div class="slds-grid">
+            <div class="slds-col">
+            <label class="slds-form-element__label" for="strtDt">
+                <abbr class="slds-required" title="required">*</abbr>
+                Start Date
+            </label>
+            <lightning-input-field required="true" variant="label-hidden" name="strtDate" id="strtDt" field-name="AuthStartDate" onchange={handleChange}></lightning-input-field>
+            </div>
+            <div class="slds-col">
+            <label class="slds-form-element__label" for="endtDt">
+                <abbr class="slds-required" title="required">*</abbr>
+                Start Time
+            </label>
+            <lightning-input-field required="true" variant="label-hidden" id="strtTm" name="strtTime" field-name="WorkStartTime" onchange={handleChange}></lightning-input-field>
+            </div>
+            <div class="slds-col">
+            </div>
+            <div class="slds-col">     
+            <label class="slds-form-element__label" for="endtDt">
+                <abbr class="slds-required" title="required">*</abbr>
+                End Date
+                </label>  
+            <lightning-input-field required="true" variant="label-hidden" name="endDate" id="endDt" field-name="AuthEndDate" onchange={handleChange}></lightning-input-field>
+            </div>
+            <div class="slds-col">
+            <label class="slds-form-element__label" for="endtDt">
+                <abbr class="slds-required" title="required">*</abbr>
+                End Time
+            </label>
+            <lightning-input-field required variant="label-hidden" id="endTm" name="endTime" field-name="WorkEndTime" onchange={handleChange}></lightning-input-field>
+            </div>
+        </div>
+    </lightning-record-edit-form>
+    
+
+    <br/>
+    <center> <lightning-button variant="brand" label={btnLabel} title="Primary action" onclick={fetchMap} class="slds-text-align_center slds-m-bottom_x-small slds-m-left_large"></lightning-button></center>
+    <br/>
+    <template if:true={showMap}>
+        <iframe src={pathtoVFPage} style="width:100%; height:500px;"></iframe> 
+        <lightning-button variant="brand" name="storeEntry" label="Save" onclick={storeEntry} class="slds-p-top_small slds-text-align_center slds-float_right slds-m-bottom_x-small slds-m-left_large"></lightning-button>
+        <template if:true={saveandaddmore}>
+            <lightning-button variant="brand" name="addEntry" label="Save and Add More" onclick={storeEntry} class="slds-p-top_small slds-text-align_center slds-float_right slds-m-bottom_x-small slds-m-left_large"></lightning-button>
+        </template>
+    </template> 
+    
+</template>

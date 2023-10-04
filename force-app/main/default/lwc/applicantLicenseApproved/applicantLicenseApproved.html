@@ -1,0 +1,13 @@
+<template>
+    <br/>
+    <lightning-accordion 
+        allow-multiple-sections-open
+        active-section-name={activeSections}>
+        <template for:each={locDetails} for:item="obj">
+            <lightning-accordion-section name={obj.Name} label={obj.label} key={obj.Name}>
+                <c-applicant-license-approved-child schedule-rec={obj}>
+                </c-applicant-license-approved-child>
+            </lightning-accordion-section>
+        </template>
+    </lightning-accordion>
+</template>

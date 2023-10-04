@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Authorization_Location_Access_Schedule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Authorization Location Access Schedule</label>
+    <referenceTo>AuthLocationAccessSchedule</referenceTo>
+    <relationshipLabel>Polygon Schedules</relationshipLabel>
+    <relationshipName>Polygon_Schedules</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

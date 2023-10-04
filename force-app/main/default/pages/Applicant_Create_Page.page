@@ -1,0 +1,340 @@
+<apex:page lightningStylesheets="true" controller="Applicant_Create_Ctr" docType="html-5.0" showHeader="false" sidebar="false"> 
+    <style>
+        html,
+        body,
+         
+  .mapContainer {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        }
+        
+    .loadingIcon {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+}
+    </style>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.ESRIINIT, '/esri/themes/light/main.css')}"/>
+    <apex:includeScript loadOnReady="true" value="{!URLFOR($Resource.ESRIINIT, '/init.js')}"/>
+    <script>
+    var geometry;
+    var area;
+    var locationSelected;
+    var graphicsLayer;
+    var graphicsLayer1;
+    let fixedarea = 0;
+    var intersect = false;
+    
+    var lat = {!JSENCODE(strLat)}; 
+    var lon = {!JSENCODE(strLon)};
+    </script>
+    <apex:outputPanel id="container">
+    <script>
+       function loadMaps(){
+    require(
+        [
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/widgets/ScaleBar",
+            "esri/widgets/Sketch",
+            "esri/Graphic",
+            "esri/layers/GraphicsLayer",
+            "esri/geometry/geometryEngine",
+            "esri/widgets/Search",
+            "esri/geometry/support/webMercatorUtils"
+        ],
+        (
+            esriConfig,
+            Map,
+            MapView,
+            ScaleBar,
+            Sketch,
+            Graphic,
+            GraphicsLayer,
+            geometryEngine,
+            Search,
+            webMercatorUtils
+        ) => {
+            esriConfig.apiKey = "{!JSENCODE(apiKey)}";
+            const map = new Map({
+                basemap: "arcgis-imagery", // Basemap layer service
+            });
+
+            invalidSymbol = createSymbol(
+                {!JSENCODE(invalidDrawnPolygonColor)},
+                "{!JSENCODE(invalidPolygonStyle)}",
+                4,
+                {!JSENCODE(invalidDrawnPolygonOutLineColor)}
+            );
+            validSymbol = createSymbol(
+                {!JSENCODE(validDrawnPolygonColor)},
+                "{!JSENCODE(validPolygonStyle)}",
+                2,
+                {!JSENCODE(validDrawnPolygonOutLineColor)}
+            );
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [lat, lon],
+                zoom: 17,
+                constraints: {
+                    rotationEnabled: false,
+                    minZoom: 15
+                }
+            });
+            const search = new Search({
+                view: view
+            });
+           
+        view.watch('updating', function(evt){
+            if(evt === true){
+                document.getElementsByClassName('loadingIcon')[0].style.display='block';
+            }else{
+                document.getElementsByClassName('loadingIcon')[0].style.display='none';
+            }
+        }) 
+            search.on('search-complete', function(result) {
+                if (result.results && result.results.length > 0 && result.results[0].results && result.results[0].results.length > 0) {
+                    var geom = result.results[0].results[0].feature.geometry;
+                }
+            });
+
+            view.ui.add(search, "top-right");
+            const scalebar = new ScaleBar({
+                view: view,
+                unit: "metric"
+            });
+
+            view.ui.add(scalebar, "bottom-right");
+            graphicsLayer = new GraphicsLayer();
+            graphicsLayer1 = new GraphicsLayer();
+            let arr = new Array();
+
+            let polygonsData = "{!JSENCODE(allPolygons)}";
+            let parsedVal = polygonsData ? JSON.parse(polygonsData) : {};
+            const simpleFillSymbol = {
+                type: "simple-fill",
+                color: {!JSENCODE(existingPolygonColor)}, // Orange, opacity 80%
+                outline: {
+                    color: {!JSENCODE(existingPolygonOutLineColor)},
+                    width: 1
+                }
+            };
+
+            for (i = 0; i < parsedVal.length; i++) {
+                const polygon = {
+                    type: "polygon",
+                    "spatialReference": JSON.parse(parsedVal[i].Polygon__r.Data).spatialReference,
+                    "rings": JSON.parse(parsedVal[i].Polygon__r.Data).rings
+                }
+                let content = {
+                    "Id": parsedVal[i].Id,
+                    "StartDate": parsedVal[i].Authorization_Location_Access_Schedule__r.AuthStartDate,
+                    "EndDate": parsedVal[i].Authorization_Location_Access_Schedule__r.AuthEndDate,
+                    "StartTime": parsedVal[i].Authorization_Location_Access_Schedule__r.WorkStartTime,
+                    "EndTime": parsedVal[i].Authorization_Location_Access_Schedule__r.WorkEndTime
+                };
+                const polygonGraphic = new Graphic({
+                    geometry: polygon,
+                    symbol: simpleFillSymbol,
+                    attributes: content
+                });
+                graphicsLayer.add(polygonGraphic);
+                arr.push(polygonGraphic);
+            }
+
+            map.add(graphicsLayer);
+            map.add(graphicsLayer1);
+
+            const sketch = new Sketch({
+                layer: graphicsLayer1,
+                view: view,
+                availableCreateTools: ["polygon", "rectangle", "circle"],
+                creationMode: "update",
+                updateOnGraphicClick: true,
+                visibleElements: {
+                    createTools: {
+                        point: false,
+                        circle: true
+                    },
+                    selectionTools: {
+                        "lasso-selection": false,
+                        "rectangle-selection": false,
+                    },
+                    settingsMenu: false,
+                    undoRedoMenu: false,
+                },
+                defaultUpdateOptions: {
+                    enableRotation: false,
+                    enableScaling: false,
+                    enableZ: false,
+                    multipleSelectionEnabled: false,
+                    toggleToolOnClick: false
+                }
+            });
+            view.ui.add(sketch, "top-right");
+
+            view.on("pointer-move", function(event) {
+                view.hitTest(event).then(function(response) {
+                    if (response.results.length) {
+                        var graphic = response.results[0].graphic;
+                        if (graphic.geometry && graphic.attributes && graphic.attributes.Id) {
+                            let htmlContent = '<p> Start Date : <b>' + response.results[0].graphic.attributes.StartDate + '</b><br>';
+                            htmlContent += 'Start Time : <b>' + response.results[0].graphic.attributes.StartTime + '</b><br>';
+                            htmlContent += 'End Date : <b>' + response.results[0].graphic.attributes.EndDate + '</b><br>';
+                            htmlContent += 'End Time : <b>' + response.results[0].graphic.attributes.EndTime + '</b></p>';
+                            view.popup.open({
+                                title: 'Booking Details',
+                                location: graphic.geometry.centroid,
+                                content: htmlContent
+                            });
+                        }
+                    } else {
+                        view.popup.close();
+                    }
+                });
+            });
+
+            sketch.on("delete", (e) => {
+            });
+
+            sketch.on("update", (e) => {
+                geometry = e.graphics[0].geometry;
+
+            });
+            sketch.on("create", function(event) {
+                if (event.state === "complete") {
+                    intersect = false;
+                    arr.forEach(ele => {
+                        intersect = intersect || geometryEngine.intersects(ele.geometry, event.graphic.geometry);
+                    });
+                    if (!intersect) {
+                        graphicsLayer1.graphics.items.forEach(ele => {
+                            if (ele.geometry != event.graphic.geometry) {
+                                intersect = intersect || geometryEngine.intersects(ele.geometry, event.graphic.geometry);
+                            }
+                        });
+                    }
+                    event.graphic.symbol = intersect ? invalidSymbol : validSymbol;
+                    if (intersect == true) {
+                        event.graphic.symbol = invalidSymbol;
+                    }
+                    let geomDetails = webMercatorUtils.webMercatorToGeographic(event.graphic.geometry).toJSON();
+                    locationSelected = geomDetails.rings[0][0];
+                }
+            });
+            sketch.on("update", function(event) {
+                const eventInfo = event.toolEventInfo;
+                if (eventInfo && eventInfo.type.includes("move")) {
+                    sketch.cancel();
+                }
+            });
+        });
+
+        }
+       function saveData() {
+        let geo;
+        let details = {};
+        if (intersect == false) {
+            let polygonRings = [];
+            let index=000;
+            graphicsLayer1.graphics.items.forEach(ele => {
+                let polygonData = {
+                    "spatialReference": {
+                            "latestWkid": ele.geometry.spatialReference.latestWkid,
+                            "wkid": ele.geometry.spatialReference.wkid
+                        },
+                        "rings": ele.geometry.rings
+                };
+                let polygonRing = {
+                    "data" : JSON.stringify(polygonData),
+                    "name":"LOC-"+index
+                }
+                polygonRings.push(polygonRing);
+                index++;
+            });
+            if (polygonRings.length < 1) {
+                details.error = 'No polygons found';
+            } else {
+                details.geometry = polygonRings;
+                details.lat = locationSelected[0];
+                details.lng = locationSelected[1];
+                details.startDate = '{!strDtStrt}';
+                details.startTime = '{!timeStrt}';
+                details.endDate = '{!strDtEnd}';
+                details.endTime = '{!timeEnd}';
+            }
+        } else {
+            details.error = 'Overlapping polygons found';
+        }
+        geo = JSON.stringify(details);
+        sendToLWC(geo);
+    }
+    
+    function sendToLWC(geo) {
+        var payload = geo;
+        var message = {
+            name: "storeDetails",
+            payload: payload,
+            location: locName
+        };
+        parent.postMessage(message, lexOriginCommunity);
+    }
+     var locName;
+    function createSymbol(color, style, width, outlineColor) {
+        return {
+            type: "simple-fill",
+            style: style,
+            color: color,
+            outline: {
+                color: outlineColor,
+                width: width
+            }
+        };
+    }
+    </script>
+</apex:outputPanel>
+    <body>
+        <div class="loadingIcon">
+            <apex:image url="{!$Resource.loading}" width="50" height="50"/>
+        </div>
+    <div id="viewDiv" class="mapContainer"></div>  
+    </body> 
+    <apex:form >        
+        <apex:actionFunction name="sendToApex" action="{!fetchTimeDetails}" oncomplete="loadMaps();" reRender="container">
+            <apex:param name="p1" value="" assignTo="{!schDetails}" />
+        </apex:actionFunction>   
+    </apex:form>
+<script>
+var lexOriginCommunity = "{!JSENCODE(communityUrl)}";
+message = {
+    name:"pageLoaded",
+    location : locName
+};
+parent.postMessage(message,lexOriginCommunity);
+    window.addEventListener("message", function(event) {
+        if(event.origin === lexOriginCommunity){
+            let recdMsg = JSON.parse(event.data);
+            if (!locName) {
+                locName = recdMsg.detail.name;
+            }
+            if (locName == recdMsg.detail.name) {
+                if (recdMsg.title == 'captureDetails') {
+                    saveData();
+                } else if (recdMsg.title == 'fetchDetails') {
+                    sendToApex(JSON.stringify(recdMsg.detail));
+                }
+            }
+        }
+    });
+    
+    
+</script>
+
+</apex:page>

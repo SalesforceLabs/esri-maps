@@ -1,0 +1,31 @@
+<template>
+    
+    <div class="slds-p-around_medium lgc-bg slds-m-top_medium slds-m-bottom_x-large">
+            <lightning-tile>
+                <lightning-icon icon-name="utility:info" alternative-text="info" title="Info"></lightning-icon>
+                <b> Multiple polygons can be drawn on a single map for the selected time slot. For multiple time slots, click on 'Save and Add More'.</b>
+            </lightning-tile>
+        </div>
+    
+    <br/>
+    
+    <lightning-accordion 
+        allow-multiple-sections-open
+        active-section-name={activeSections}>
+    <template for:each={locArray} for:item="obj">
+        <lightning-accordion-section name={obj.name} label={obj.name} key={obj.name}>
+            <c-applicant-create-child obj={obj} key={obj.name} onshowtoast={showToastFromChild} onaddentry={addEntry} onremoveentry={removeEntry} saveandaddmore={allowMultipleLocations}>
+            </c-applicant-create-child>
+        </lightning-accordion-section>
+    </template>
+    
+    </lightning-accordion>
+    <br/>
+    <br/>
+    
+    
+
+    <lightning-button variant="brand" label="Next" title="Primary action" onclick={handleNextClick} class="slds-text-align_center slds-float_right slds-m-bottom_x-small slds-m-left_large"></lightning-button>
+
+    <lightning-button variant="neutral" label="Previous" title="Primary action" onclick={handlePrevClick} class="slds-text-align_center slds-float_right slds-m-bottom_x-small "></lightning-button>
+</template>

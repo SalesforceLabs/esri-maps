@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ApiKey</label>
+    <protected>false</protected>
+    <values>
+        <field>Value__c</field>
+        <value xsi:type="xsd:string">AAPKe199b426bd974d159420b9f96623c67bUZYichUE_ZlqFL356idYADMDeaRE7hL2qynHApbB85DNZUKD7kWA212D_Ur57bOI</value>
+    </values>
+</CustomMetadata>

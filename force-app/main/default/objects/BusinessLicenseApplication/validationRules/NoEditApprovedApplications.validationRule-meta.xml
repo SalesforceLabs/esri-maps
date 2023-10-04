@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NoEditApprovedApplications</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISNEW()),
+NOT( $Permission.Delegated_User ),
+NOT(ISCHANGED( LicensePermitNameId )),
+OR(
+ISPICKVAL(PRIORVALUE(Status), &quot;Approved&quot;),
+ISPICKVAL(PRIORVALUE(Status), &quot;Rejected&quot;)
+)
+)</errorConditionFormula>
+    <errorMessage>Review has been completed and application can no longer be edited. Please contact System Administrator if you need to make any changes.</errorMessage>
+</ValidationRule>

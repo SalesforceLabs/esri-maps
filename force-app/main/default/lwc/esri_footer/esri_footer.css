@@ -1,0 +1,27 @@
+.content-container_bottom {
+    display:flex;
+    background: rgba(3, 45, 96, 1);
+    box-sizing: border-box;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(226, 232, 240);
+}
+.terms {
+    justify-content: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(226, 232, 240);
+    color: white;
+    margin: auto;
+    padding: 2%;
+}
+.terms_links {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(226, 232, 240);
+}

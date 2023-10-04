@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommunityThemeDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultBrandingSet>Applicant_Community</defaultBrandingSet>
+    <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
+    <masterLabel>Applicant_Community</masterLabel>
+    <publisher>CSALabs</publisher>
+    <themeSetting>
+        <themeLayout>Applicant_Community_themeLayout_Login</themeLayout>
+        <themeLayoutType>Login</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+        <themeLayout>Applicant_Community_themeLayout_Home</themeLayout>
+        <themeLayoutType>Home</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+        <themeLayout>Applicant_Community_themeLayout_ServiceNotAvailable</themeLayout>
+        <themeLayoutType>ServiceNotAvailable</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+        <themeLayout>Applicant_Community_themeLayout_Default</themeLayout>
+        <themeLayoutType>Inner</themeLayoutType>
+    </themeSetting>
+</CommunityThemeDefinition>

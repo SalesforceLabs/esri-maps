@@ -1,0 +1,137 @@
+<apex:page lightningStylesheets="true" docType="html-5.0" controller="Applicant_License_Approved_Ctr" showHeader="false" sidebar="false">
+    <html>
+        <head>
+            <style>
+                html,
+                body,
+                
+                .mapContainer {
+                    padding: 0;
+                    margin: 0;
+                    height: 100%;
+                    width: 100%;
+                }
+                
+                .esri-popup__button.esri-popup__action {
+                    border: 1px solid;
+                    color: blue;
+                    padding-left: var(--sds-c-button-neutral-spacing-inline-start,1rem);
+                    padding-right: var(--sds-c-button-neutral-spacing-inline-end,1rem);
+                    text-align: center;
+                    vertical-align: middle;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;post
+                    justify-content: center;
+                    -webkit-transition: border .15s linear;
+                    transition: border .15s linear;
+                    background-color: var(--sds-c-button-neutral-color-background,#fff);
+                    border-color: var(--sds-c-button-neutral-color-border,#dddbda);
+                }
+                .esri-component.esri-sketch.esri-widget{
+                    display:none;
+                }
+            </style>
+            <apex:stylesheet value="{!URLFOR($Resource.ESRIINIT, '/esri/themes/light/main.css')}"/>
+            <apex:includeScript loadOnReady="true" value="{!URLFOR($Resource.ESRIINIT, '/init.js')}"/>
+        
+        <script>
+            function loadMaps(){
+                var graphicsLayer1;
+                require([
+                    "esri/config",
+                    "esri/Map",
+                    "esri/views/MapView",
+                    "esri/Graphic",
+                    "esri/layers/GraphicsLayer",
+                    "esri/layers/FeatureLayer",
+                    "esri/widgets/LayerList",
+                    "esri/widgets/Expand",
+                    "esri/widgets/ScaleBar",
+                    "esri/widgets/Sketch",
+                    "esri/geometry/geometryEngine",
+                    "esri/widgets/Search",
+                    "esri/geometry/support/webMercatorUtils"
+                ], function(esriConfig, Map, MapView,Graphic, GraphicsLayer, FeatureLayer,LayerList,Expand,ScaleBar,Sketch,geometryEngine,Search,webMercatorUtils) {
+                
+                    esriConfig.apiKey = "{!JSENCODE(apiKey)}";
+                    const map = new Map({
+                        basemap: "{!JSENCODE(baseMapLayer)}", // Basemap layer service
+                    });
+                    
+                    const view = new MapView({
+                        container: "viewDiv",
+                        map: map,
+                        center: ['{!JSENCODE(strLatitude)}','{!JSENCODE(strLongitude)}' ], // Latitude, Longitude
+                        zoom: 18,
+                        constraints: {
+                            rotationEnabled: false,
+                            minZoom: 15
+                        }
+                    });
+                    graphicsLayer = new GraphicsLayer();
+                    let polygon1;
+                    let attributes1;
+                    let polygonGraphic1;
+                
+                    const simpleFillSymbol1 = {
+                        type: "simple-fill",
+                        // Orange, opacity 80%
+                        outline: {
+                            color: {!JSENCODE(outLineColor)},
+                            width: 3
+                        }
+                    };
+
+                    let polygonrecords = "{!JSENCODE(strCurPolyRec)}";
+                    polygonrecords = JSON.parse(polygonrecords);
+                    for(i=0;i<polygonrecords.length;i++) {
+                        polygon1 = {
+                            type: "polygon",
+                            "spatialReference": polygonrecords[i].Polygon__r.Altered_Data__c != undefined ? JSON.parse(polygonrecords[i].Polygon__r.Altered_Data__c).spatialReference : JSON.parse(polygonrecords[i].Polygon__r.Data).spatialReference,
+                            "rings": polygonrecords[i].Polygon__r.Altered_Data__c != undefined ? JSON.parse(polygonrecords[i].Polygon__r.Altered_Data__c).rings : JSON.parse(polygonrecords[i].Polygon__r.Data).rings
+                        };
+                        attributes1 = {
+                            "Status" : polygonrecords[i].Status__c,
+                            "Comments" : polygonrecords[i].Comments__c == undefined ? '' : polygonrecords[i].Comments__c 
+                        };
+                        polygonGraphic1 = new Graphic({
+                            geometry: polygon1,
+                            symbol: simpleFillSymbol1,
+                            attributes: attributes1,
+                        });
+                        graphicsLayer.add(polygonGraphic1);
+                    }   
+                    map.add(graphicsLayer);
+                
+                    view.on("pointer-move", function(event) {
+                        view.hitTest(event).then(function(response) {
+                            if (response.results.length) {
+                                var graphic = response.results[0].graphic;
+                                if (graphic.geometry && graphic.attributes && graphic.attributes.Status) {
+                                    let htmlContent;
+                                    if(response.results[0].graphic.attributes.Comments != undefined && response.results[0].graphic.attributes.Comments != '') {
+                                        htmlContent = '<p> Status : <b>' + response.results[0].graphic.attributes.Status + '</b><br>';
+                                        htmlContent += 'Comments : <b>' + response.results[0].graphic.attributes.Comments + '</b></p>';
+                                    } else {
+                                        htmlContent = '<p> Status : <b>' + response.results[0].graphic.attributes.Status + '</b></p>';
+                                    }
+                                    view.popup.open({
+                                        title: 'Booking Details',
+                                        location: graphic.geometry.centroid,
+                                        content: htmlContent
+                                    });
+                                }
+                            } else {
+                                view.popup.close();
+                            }
+                        });
+                    });   
+                });
+            }
+        </script>
+            </head>
+        <body onload="loadMaps();">
+            <div id="viewDiv" class="mapContainer"></div>
+        </body>
+    </html>
+</apex:page>

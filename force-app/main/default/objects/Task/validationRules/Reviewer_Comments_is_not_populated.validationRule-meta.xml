@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reviewer_Comments_is_not_populated</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( AND(NOT(ISBLANK(TEXT(Approval_Status__c))), ISBLANK( Description )),
+true,false 
+)</errorConditionFormula>
+    <errorMessage>Comments should be populated if Approval Status is not Blank</errorMessage>
+</ValidationRule>

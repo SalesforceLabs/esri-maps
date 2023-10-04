@@ -1,0 +1,28 @@
+<template>
+<lightning-record-view-form
+    object-api-name="AuthLocationAccessSchedule"
+    record-id={scheduleRecId}>
+    <div class="slds-grid">
+        <div class="slds-col">
+            <label class="slds-form-element__label" for="strtDt"><b>Start Date</b></label>
+            <lightning-output-field  class="outputf" variant="label-hidden" id="strtDt" field-name="AuthStartDate"> </lightning-output-field>
+        </div>
+        <div class="slds-col">
+            <label class="slds-form-element__label" for="strtTm"><b>Start Time</b></label>
+            <lightning-output-field  class="outputf" variant="label-hidden" id="strtTm" field-name="WorkStartTime"> </lightning-output-field>
+        </div>
+        <div class="slds-col">
+        </div>
+        <div class="slds-col">
+            <label class="slds-form-element__label" for="endtDt"><b>End Date</b></label>
+            <lightning-output-field  class="outputf" variant="label-hidden" id="endDt" field-name="AuthEndDate"> </lightning-output-field>
+        </div>
+        <div class="slds-col">
+            <label class="slds-form-element__label" for="endTm"><b>End Time</b></label>
+            <lightning-output-field  class="outputf" variant="label-hidden" id="endTm" field-name="WorkEndTime"> </lightning-output-field>
+        </div>
+    </div>
+    <br/>
+    <iframe src={pathtoVFPage} style="width:100%; height:500px;"></iframe> 
+</lightning-record-view-form>
+</template>

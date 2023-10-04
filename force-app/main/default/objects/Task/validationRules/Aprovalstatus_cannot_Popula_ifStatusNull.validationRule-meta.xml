@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Aprovalstatus_cannot_Popula_ifStatusNull</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( BEGINS(WhatId, &apos;0f0&apos;),
+   
+   AND(
+        NOT(ISPICKVAL( Status , &apos;Completed&apos;)),
+        NOT(ISBLANK(TEXT(Approval_Status__c)))
+      )
+)</errorConditionFormula>
+    <errorDisplayField>Approval_Status__c</errorDisplayField>
+    <errorMessage>Approval Status cannot be populated if the Status is not completed</errorMessage>
+</ValidationRule>

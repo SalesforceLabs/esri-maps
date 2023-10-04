@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OmniDataTransform xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <assignmentRulesUsed>false</assignmentRulesUsed>
+    <deletedOnSuccess>false</deletedOnSuccess>
+    <errorIgnored>false</errorIgnored>
+    <expectedInputJson>{
+  &quot;timeStamp&quot; : &quot;2023-02-26T14:19:31.233Z&quot;,
+  &quot;userProfile&quot; : &quot;System Administrator&quot;,
+  &quot;userTimeZoneName&quot; : &quot;America/Los_Angeles&quot;,
+  &quot;userTimeZone&quot; : &quot;-480&quot;,
+  &quot;userCurrencyCode&quot; : &quot;USD&quot;,
+  &quot;userName&quot; : &quot;tarun.tamboli@csaesri.com&quot;,
+  &quot;userId&quot; : &quot;005Dn000003U7zbIAC&quot;,
+  &quot;omniProcessId&quot; : &quot;0jNDn0000005GaYMAU&quot;,
+  &quot;Contact Information&quot; : null,
+  &quot;Event Details&quot; : {
+    &quot;Type of Event&quot; : &quot;Wedding&quot;,
+    &quot;Location Type&quot; : &quot;Van&quot;,
+    &quot;Description&quot; : &quot;test&quot;,
+    &quot;Application Type&quot; : &quot;New&quot;,
+    &quot;Regulatory Authorization Type&quot; : &quot;0ehDn0000004HRQIA2&quot;
+  },
+  &quot;Select Work Location&quot; : {
+    &quot;AcknowledgementAccepted&quot; : true,
+    &quot;CustomLWC7&quot; : {
+      &quot;locDetails&quot; : [ {
+        &quot;strtDateTime&quot; : &quot;2023-02-01T14:19:00.000Z&quot;,
+        &quot;endDateTime&quot; : &quot;2023-02-02T14:19:00.000Z&quot;,
+        &quot;name&quot; : &quot;Location1&quot;,
+        &quot;dataRecd&quot; : {
+          &quot;geometry&quot; : [ {
+            &quot;data&quot; : &quot;{\&quot;spatialReference\&quot;:{\&quot;latestWkid\&quot;:3857,\&quot;wkid\&quot;:102100},\&quot;rings\&quot;:[[[-8848847.82853968,5422950.414844809],[-8848640.015369046,5422950.414844809],[-8848640.015369046,5422803.114336749],[-8848847.82853968,5422803.114336749],[-8848847.82853968,5422950.414844809]]]}&quot;,
+            &quot;name&quot; : 0
+          }, {
+            &quot;data&quot; : &quot;{\&quot;spatialReference\&quot;:{\&quot;latestWkid\&quot;:3857,\&quot;wkid\&quot;:102100},\&quot;rings\&quot;:[[[-8848483.160168668,5422854.072361676],[-8848345.414334705,5422854.072361676],[-8848345.414334705,5422748.9713931205],[-8848483.160168668,5422748.9713931205],[-8848483.160168668,5422854.072361676]]]}&quot;,
+            &quot;name&quot; : 1
+          } ],
+          &quot;lat&quot; : -79,
+          &quot;lng&quot; : 43,
+          &quot;startDate&quot; : &quot;2023-02-01&quot;,
+          &quot;startTime&quot; : &quot;14:19:00.000Z&quot;,
+          &quot;endDate&quot; : &quot;2023-02-02&quot;,
+          &quot;endTime&quot; : &quot;14:19:00.000Z&quot;
+        }
+      }, {
+        &quot;strtDateTime&quot; : &quot;2023-02-27T14:20:00.000Z&quot;,
+        &quot;endDateTime&quot; : &quot;2023-02-28T14:20:00.000Z&quot;,
+        &quot;name&quot; : &quot;Location2&quot;,
+        &quot;dataRecd&quot; : {
+          &quot;geometry&quot; : [ {
+            &quot;data&quot; : &quot;{\&quot;spatialReference\&quot;:{\&quot;latestWkid\&quot;:3857,\&quot;wkid\&quot;:102100},\&quot;rings\&quot;:[[[-8848917.141544035,5422763.7014575945],[-8848917.307061616,5422760.54319401],[-8848917.801800912,5422757.419533023],[-8848918.62034146,5422754.364698115],[-8848919.753715154,5422751.412158698],[-8848921.189504515,5422748.594263411],[-8848922.911978738,5422745.941885706],[-8848924.902266031,5422743.484085586],[-8848927.138560394,5422741.247791225],[-8848929.596360512,5422739.257503931],[-8848932.248738218,5422737.535029709],[-8848935.066633504,5422736.099240347],[-8848938.019172922,5422734.965866652],[-8848941.07400783,5422734.147326106],[-8848944.197668817,5422733.652586808],[-8848947.355932401,5422733.487069228],[-8848950.514195986,5422733.652586808],[-8848953.637856973,5422734.147326106],[-8848956.692691881,5422734.965866652],[-8848959.6452313,5422736.099240347],[-8848962.463126585,5422737.535029709],[-8848965.11550429,5422739.257503931],[-8848967.57330441,5422741.247791225],[-8848969.809598772,5422743.484085586],[-8848971.799886065,5422745.941885706],[-8848973.522360288,5422748.594263411],[-8848974.95814965,5422751.412158698],[-8848976.091523344,5422754.364698115],[-8848976.91006389,5422757.419533023],[-8848977.404803187,5422760.54319401],[-8848977.570320768,5422763.7014575945],[-8848977.404803187,5422766.859721179],[-8848976.91006389,5422769.983382166],[-8848976.091523344,5422773.038217074],[-8848974.95814965,5422775.990756491],[-8848973.522360288,5422778.808651778],[-8848971.799886065,5422781.461029483],[-8848969.809598772,5422783.918829603],[-8848967.57330441,5422786.155123964],[-8848965.11550429,5422788.145411258],[-8848962.463126585,5422789.86788548],[-8848959.6452313,5422791.303674842],[-8848956.692691881,5422792.437048537],[-8848953.637856973,5422793.255589083],[-8848950.514195986,5422793.750328381],[-8848947.355932401,5422793.915845961],[-8848944.197668817,5422793.750328381],[-8848941.07400783,5422793.255589083],[-8848938.019172922,5422792.437048537],[-8848935.066633504,5422791.303674842],[-8848932.248738218,5422789.86788548],[-8848929.596360512,5422788.145411258],[-8848927.138560394,5422786.155123964],[-8848924.902266031,5422783.918829603],[-8848922.911978738,5422781.461029483],[-8848921.189504515,5422778.808651778],[-8848919.753715154,5422775.990756491],[-8848918.62034146,5422773.038217074],[-8848917.801800912,5422769.983382166],[-8848917.307061616,5422766.859721179],[-8848917.141544035,5422763.7014575945]]]}&quot;,
+            &quot;name&quot; : 0
+          }, {
+            &quot;data&quot; : &quot;{\&quot;spatialReference\&quot;:{\&quot;latestWkid\&quot;:3857,\&quot;wkid\&quot;:102100},\&quot;rings\&quot;:[[[-8848481.567791328,5422767.682601415],[-8848370.097076489,5422767.682601415],[-8848370.097076489,5422700.800201672],[-8848481.567791328,5422700.800201672],[-8848481.567791328,5422767.682601415]]]}&quot;,
+            &quot;name&quot; : 1
+          } ],
+          &quot;lat&quot; : -79,
+          &quot;lng&quot; : 43,
+          &quot;startDate&quot; : &quot;2023-02-27&quot;,
+          &quot;startTime&quot; : &quot;14:20:00.000Z&quot;,
+          &quot;endDate&quot; : &quot;2023-02-28&quot;,
+          &quot;endTime&quot; : &quot;14:20:00.000Z&quot;
+        }
+      } ]
+    }
+  },
+  &quot;userDetails&quot; : [ {
+    &quot;Id&quot; : &quot;005Dn000003U7zbIAC&quot;
+  } ],
+  &quot;License Type&quot; : {
+    &quot;LicenseOREvent&quot; : &quot;Special Event&quot;
+  },
+  &quot;userAccountId&quot; : &quot;%userDetails|1:AccountId%&quot;,
+  &quot;userContactId&quot; : &quot;%userDetails|1:ContactId%&quot;,
+  &quot;ContractorId&quot; : &quot;%DRId_Account%&quot;
+}</expectedInputJson>
+    <fieldLevelSecurityEnabled>false</fieldLevelSecurityEnabled>
+    <inputType>JSON</inputType>
+    <name>FetchLicenseType</name>
+    <nullInputsIncludedInOutput>false</nullInputsIncludedInOutput>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <filterValue>ReglAuthorizationName</filterValue>
+        <globalKey>FetchLicenseType22026188616773035</globalKey>
+        <inputFieldName>Name</inputFieldName>
+        <inputObjectName>RegulatoryAuthorizationType</inputObjectName>
+        <inputObjectQuerySequence>1.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>FetchLicenseType</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>LicenseNode</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>LIMIT</filterOperator>
+        <filterValue>1</filterValue>
+        <globalKey>FetchLicenseType22490141324824608</globalKey>
+        <inputObjectName>RegulatoryAuthorizationType</inputObjectName>
+        <inputObjectQuerySequence>1.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>FetchLicenseType</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>LicenseNode</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>FetchLicenseType566886492508839</globalKey>
+        <inputFieldName>LicenseNode:Id</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>FetchLicenseType</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>LicenseTypeId</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <outputType>JSON</outputType>
+    <previewJsonData>{
+  &quot;RegulatoryAuthorizationType&quot; : &quot;Special Event&quot;
+}</previewJsonData>
+    <processSuperBulk>false</processSuperBulk>
+    <responseCacheTtlMinutes>0.0</responseCacheTtlMinutes>
+    <rollbackOnError>false</rollbackOnError>
+    <sourceObject>json</sourceObject>
+    <sourceObjectDefault>false</sourceObjectDefault>
+    <synchronousProcessThreshold>0.0</synchronousProcessThreshold>
+    <type>Extract</type>
+    <uniqueName>FetchLicenseType_1</uniqueName>
+    <versionNumber>1.0</versionNumber>
+    <xmlDeclarationRemoved>false</xmlDeclarationRemoved>
+</OmniDataTransform>

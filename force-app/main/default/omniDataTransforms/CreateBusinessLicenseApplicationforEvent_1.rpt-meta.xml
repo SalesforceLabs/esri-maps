@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OmniDataTransform xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <assignmentRulesUsed>false</assignmentRulesUsed>
+    <deletedOnSuccess>false</deletedOnSuccess>
+    <errorIgnored>false</errorIgnored>
+    <expectedInputJson>{
+  &quot;timeStamp&quot; : &quot;2023-03-23T10:32:20.464Z&quot;,
+  &quot;userProfile&quot; : &quot;System Administrator&quot;,
+  &quot;userTimeZoneName&quot; : &quot;Asia/Kolkata&quot;,
+  &quot;userTimeZone&quot; : &quot;330&quot;,
+  &quot;userCurrencyCode&quot; : &quot;USD&quot;,
+  &quot;userName&quot; : &quot;adityan.thiruchuri@csaesrimaps.com&quot;,
+  &quot;userId&quot; : &quot;005Dn000005mwNlIAI&quot;,
+  &quot;omniProcessId&quot; : &quot;0jNDn0000005Gu9MAE&quot;,
+  &quot;Contact Information&quot; : null,
+  &quot;Event Details&quot; : {
+    &quot;Type of Event&quot; : &quot;Wedding&quot;,
+    &quot;Location Type&quot; : &quot;Site&quot;
+  },
+  &quot;Select Work Location&quot; : {
+    &quot;CustomLWC7&quot; : {
+      &quot;locDetails&quot; : [ {
+        &quot;strtDate&quot; : &quot;2023-03-01&quot;,
+        &quot;strtTime&quot; : &quot;00:15:00.000&quot;,
+        &quot;endDate&quot; : &quot;2023-03-03&quot;,
+        &quot;endTime&quot; : &quot;00:30:00.000&quot;,
+        &quot;name&quot; : &quot;Loc0001&quot;,
+        &quot;dataRecd&quot; : {
+          &quot;geometry&quot; : [ {
+            &quot;data&quot; : &quot;{\&quot;spatialReference\&quot;:{\&quot;latestWkid\&quot;:3857,\&quot;wkid\&quot;:102100},\&quot;rings\&quot;:[[[-8848306.598656282,5422759.322301448],[-8848306.598656282,5422644.66675903],[-8848421.254198698,5422644.66675903],[-8848421.254198698,5422759.322301448],[-8848306.598656282,5422759.322301448]]]}&quot;,
+            &quot;name&quot; : &quot;LOC-0&quot;
+          } ],
+          &quot;lat&quot; : -79.48569056148554,
+          &quot;lng&quot; : 43.72354492921434,
+          &quot;startDate&quot; : &quot;&quot;,
+          &quot;startTime&quot; : &quot;&quot;,
+          &quot;endDate&quot; : &quot;&quot;,
+          &quot;endTime&quot; : &quot;&quot;
+        }
+      } ]
+    }
+  },
+  &quot;Acknowledgement&quot; : {
+    &quot;AcknowledgementAccepted&quot; : false
+  },
+  &quot;Confirmation&quot; : { },
+  &quot;Applicant Information&quot; : {
+    &quot;IntendedRecepient&quot; : &quot;Self&quot;
+  },
+  &quot;License Type&quot; : {
+    &quot;LicenseOREvent&quot; : &quot;Special Event&quot;
+  },
+  &quot;allowMultipleLocations&quot; : &quot;True&quot;
+}</expectedInputJson>
+    <fieldLevelSecurityEnabled>false</fieldLevelSecurityEnabled>
+    <inputType>JSON</inputType>
+    <name>CreateBusinessLicenseApplicationforEvent</name>
+    <nullInputsIncludedInOutput>false</nullInputsIncludedInOutput>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent7530438552901468</globalKey>
+        <inputFieldName>blarecordtype</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>RecordTypeId</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <formulaConverted>| &quot;SELECT/\/\/ID/\/\/FROM/\/\/RecordType/\/\/WHERE/\/\/DeveloperName/\/\/=/\/\/&apos;Event&apos;&quot; QUERY</formulaConverted>
+        <formulaExpression>QUERY(&quot;SELECT ID FROM RecordType WHERE DeveloperName = &apos;Event&apos;&quot;)</formulaExpression>
+        <formulaResultPath>blarecordtype</formulaResultPath>
+        <formulaSequence>3.0</formulaSequence>
+        <globalKey>CreateBusinessLicenseApplicationforEvent8919563550732432</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>Formula</outputFieldName>
+        <outputObjectName>Formula</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent2381287788116324</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:endTime</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>4.0</outputCreationSequence>
+        <outputFieldName>WorkEndTime</outputFieldName>
+        <outputObjectName>AuthLocationAccessSchedule</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent5066993413653336</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:startTime</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>4.0</outputCreationSequence>
+        <outputFieldName>WorkStartTime</outputFieldName>
+        <outputObjectName>AuthLocationAccessSchedule</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <defaultValue>Polygon Recd</defaultValue>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent02006349896980697</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>5.0</outputCreationSequence>
+        <outputFieldName>Name</outputFieldName>
+        <outputObjectName>Polygon</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent881452937288826</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>6.0</outputCreationSequence>
+        <outputFieldName>Id</outputFieldName>
+        <outputObjectName>Polygon_Schedule__c</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent5134456767362332</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedFieldName>Id</linkedFieldName>
+        <linkedObjectSequence>4.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>6.0</outputCreationSequence>
+        <outputFieldName>Authorization_Location_Access_Schedule__c</outputFieldName>
+        <outputObjectName>Polygon_Schedule__c</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <defaultValue>Esri Community</defaultValue>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEventCustom7615</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldFormat>String</outputFieldFormat>
+        <outputFieldName>Source__c</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent15946968269150474</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>5.0</outputCreationSequence>
+        <outputFieldName>Id</outputFieldName>
+        <outputObjectName>Polygon</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEventCustom4292</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedFieldName>Id</linkedFieldName>
+        <linkedObjectSequence>1.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>6.0</outputCreationSequence>
+        <outputFieldName>BLA_Id__c</outputFieldName>
+        <outputObjectName>Polygon_Schedule__c</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent5197941345220503</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedFieldName>Id</linkedFieldName>
+        <linkedObjectSequence>2.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>3.0</outputCreationSequence>
+        <outputFieldName>PlaceId</outputFieldName>
+        <outputObjectName>AuthApplicationPlace</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>true</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent6907839838357506</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:startDate</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>4.0</outputCreationSequence>
+        <outputFieldName>AuthStartDate</outputFieldName>
+        <outputObjectName>AuthLocationAccessSchedule</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <defaultValue>GEOJSON</defaultValue>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent5395374789632676</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>5.0</outputCreationSequence>
+        <outputFieldFormat>String</outputFieldFormat>
+        <outputFieldName>DataType</outputFieldName>
+        <outputObjectName>Polygon</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent9011721215120145</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:geometry:data</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>5.0</outputCreationSequence>
+        <outputFieldName>Data</outputFieldName>
+        <outputObjectName>Polygon</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent875895292947209</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:geometry:name</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>6.0</outputCreationSequence>
+        <outputFieldName>Name</outputFieldName>
+        <outputObjectName>Polygon_Schedule__c</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent48504983636171195</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:endDate</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>4.0</outputCreationSequence>
+        <outputFieldName>AuthEndDate</outputFieldName>
+        <outputObjectName>AuthLocationAccessSchedule</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent7362397420481075</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:lat</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>3.0</outputCreationSequence>
+        <outputFieldName>name_of_the_location__c</outputFieldName>
+        <outputObjectName>AuthApplicationPlace</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent2825098235724275</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedFieldName>Id</linkedFieldName>
+        <linkedObjectSequence>5.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>6.0</outputCreationSequence>
+        <outputFieldName>Polygon__c</outputFieldName>
+        <outputObjectName>Polygon_Schedule__c</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent2821639103426514</globalKey>
+        <inputFieldName>Event Details:Description</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>Description</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent2403984743048917</globalKey>
+        <inputFieldName>Event Details:Application Type</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>ApplicationType</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <defaultValue>Draft</defaultValue>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent6291213049133557</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldFormat>String</outputFieldFormat>
+        <outputFieldName>Status</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent5478776019492395</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>Id</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent7205073336309726</globalKey>
+        <inputFieldName>QueueOwner</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>OwnerId</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent7247675125124207</globalKey>
+        <inputFieldName>userContactId</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>ApplicantId</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <formulaConverted>| NOW</formulaConverted>
+        <formulaExpression>NOW()</formulaExpression>
+        <formulaResultPath>appliedDateformula</formulaResultPath>
+        <formulaSequence>1.0</formulaSequence>
+        <globalKey>CreateBusinessLicenseApplicationforEvent40130942608497344</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>Formula</outputFieldName>
+        <outputObjectName>Formula</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent04234874089890339</globalKey>
+        <inputFieldName>Event Details:Venue Type</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>Room_or_area_preference__c</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent8823836215188037</globalKey>
+        <inputFieldName>Event Details:Type of Event</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>Type_of_Event__c</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent257892687429472</globalKey>
+        <inputFieldName>LicenseTypeId</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>LicenseTypeId</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent10237172679459405</globalKey>
+        <inputFieldName>appliedDateformula</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>AppliedDate</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent7720117929244124</globalKey>
+        <inputFieldName>userAccountId</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>AccountId</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent3242535993479254</globalKey>
+        <inputFieldName>ContractorId</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>Contractor__c</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <defaultValue>License</defaultValue>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent6457126382410867</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldFormat>String</outputFieldFormat>
+        <outputFieldName>Category</outputFieldName>
+        <outputObjectName>BusinessLicenseApplication</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent25887322000614166</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>2.0</outputCreationSequence>
+        <outputFieldName>Id</outputFieldName>
+        <outputObjectName>Location</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent2807130942921148</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>4.0</outputCreationSequence>
+        <outputFieldName>Id</outputFieldName>
+        <outputObjectName>AuthLocationAccessSchedule</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent876516324017391</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedFieldName>Id</linkedFieldName>
+        <linkedObjectSequence>1.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>3.0</outputCreationSequence>
+        <outputFieldName>RgltyAuthApplicationId</outputFieldName>
+        <outputObjectName>AuthApplicationPlace</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>true</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent18902849993773696</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedFieldName>Id</linkedFieldName>
+        <linkedObjectSequence>3.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>4.0</outputCreationSequence>
+        <outputFieldName>AuthApplPlaceId</outputFieldName>
+        <outputObjectName>AuthLocationAccessSchedule</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent2606081528715365</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:name</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>2.0</outputCreationSequence>
+        <outputFieldName>Name</outputFieldName>
+        <outputObjectName>Location</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent6333233031711072</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:lng</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>2.0</outputCreationSequence>
+        <outputFieldName>Longitude</outputFieldName>
+        <outputObjectName>Location</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <formulaConverted>| &quot;SELECT/\/\/Id/\/\/FROM/\/\/Group/\/\/WHERE/\/\/Name/\/\/=/\/\/&apos;Reviewers&apos;&quot; QUERY</formulaConverted>
+        <formulaExpression>QUERY(&quot;SELECT Id FROM Group WHERE Name = &apos;Reviewers&apos;&quot;)</formulaExpression>
+        <formulaResultPath>QueueOwner</formulaResultPath>
+        <formulaSequence>2.0</formulaSequence>
+        <globalKey>CreateBusinessLicenseApplicationforEvent7155373346872951</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>Formula</outputFieldName>
+        <outputObjectName>Formula</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <filterOperator>=</filterOperator>
+        <globalKey>CreateBusinessLicenseApplicationforEvent6812326887449816</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <migrationValue>FAKEMAPPING</migrationValue>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>3.0</outputCreationSequence>
+        <outputFieldName>Id</outputFieldName>
+        <outputObjectName>AuthApplicationPlace</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent05105281477286616</globalKey>
+        <inputFieldName>Select Work Location:CustomLWC7:locDetails:dataRecd:lat</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>2.0</outputCreationSequence>
+        <outputFieldName>Latitude</outputFieldName>
+        <outputObjectName>Location</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>CreateBusinessLicenseApplicationforEvent09085499859880852</globalKey>
+        <inputFieldName>Event Details:Location Type</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>CreateBusinessLicenseApplicationforEvent</name>
+        <outputCreationSequence>2.0</outputCreationSequence>
+        <outputFieldName>LocationType</outputFieldName>
+        <outputObjectName>Location</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <outputType>SObject</outputType>
+    <previewJsonData>{
+  &quot;timeStamp&quot; : &quot;2023-03-23T10:32:20.464Z&quot;,
+  &quot;userProfile&quot; : &quot;System Administrator&quot;,
+  &quot;userTimeZoneName&quot; : &quot;Asia/Kolkata&quot;,
+  &quot;userTimeZone&quot; : &quot;330&quot;,
+  &quot;userCurrencyCode&quot; : &quot;USD&quot;,
+  &quot;userName&quot; : &quot;adityan.thiruchuri@csaesrimaps.com&quot;,
+  &quot;userId&quot; : &quot;005Dn000005mwNlIAI&quot;,
+  &quot;omniProcessId&quot; : &quot;0jNDn0000005Gu9MAE&quot;,
+  &quot;Contact Information&quot; : null,
+  &quot;Event Details&quot; : {
+    &quot;Type of Event&quot; : &quot;Wedding&quot;,
+    &quot;Location Type&quot; : &quot;Site&quot;
+  },
+  &quot;Select Work Location&quot; : {
+    &quot;CustomLWC7&quot; : {
+      &quot;locDetails&quot; : [ {
+        &quot;strtDate&quot; : &quot;2023-03-01&quot;,
+        &quot;strtTime&quot; : &quot;00:15:00.000&quot;,
+        &quot;endDate&quot; : &quot;2023-03-03&quot;,
+        &quot;endTime&quot; : &quot;00:30:00.000&quot;,
+        &quot;name&quot; : &quot;Loc0001&quot;,
+        &quot;dataRecd&quot; : {
+          &quot;geometry&quot; : [ {
+            &quot;data&quot; : &quot;{\&quot;spatialReference\&quot;:{\&quot;latestWkid\&quot;:3857,\&quot;wkid\&quot;:102100},\&quot;rings\&quot;:[[[-8848306.598656282,5422759.322301448],[-8848306.598656282,5422644.66675903],[-8848421.254198698,5422644.66675903],[-8848421.254198698,5422759.322301448],[-8848306.598656282,5422759.322301448]]]}&quot;,
+            &quot;name&quot; : &quot;LOC-0&quot;
+          } ],
+          &quot;lat&quot; : -79.48569056148554,
+          &quot;lng&quot; : 43.72354492921434,
+          &quot;startDate&quot; : &quot;&quot;,
+          &quot;startTime&quot; : &quot;&quot;,
+          &quot;endDate&quot; : &quot;&quot;,
+          &quot;endTime&quot; : &quot;&quot;
+        }
+      } ]
+    }
+  },
+  &quot;Acknowledgement&quot; : {
+    &quot;AcknowledgementAccepted&quot; : false
+  },
+  &quot;Confirmation&quot; : { },
+  &quot;Applicant Information&quot; : {
+    &quot;IntendedRecepient&quot; : &quot;Self&quot;
+  },
+  &quot;License Type&quot; : {
+    &quot;LicenseOREvent&quot; : &quot;Special Event&quot;
+  },
+  &quot;allowMultipleLocations&quot; : &quot;True&quot;
+}</previewJsonData>
+    <processSuperBulk>false</processSuperBulk>
+    <responseCacheTtlMinutes>0.0</responseCacheTtlMinutes>
+    <rollbackOnError>false</rollbackOnError>
+    <sourceObject>json</sourceObject>
+    <sourceObjectDefault>false</sourceObjectDefault>
+    <synchronousProcessThreshold>0.0</synchronousProcessThreshold>
+    <type>Load</type>
+    <uniqueName>CreateBusinessLicenseApplicationforEvent_1</uniqueName>
+    <versionNumber>1.0</versionNumber>
+    <xmlDeclarationRemoved>false</xmlDeclarationRemoved>
+</OmniDataTransform>
