@@ -1,0 +1,1 @@
+This is a slimmed down version of the full ESRI maps accelerator to show another example of how ESRI can be used with Public Sector Soluitions.  For an overview and installation instructions, please see the BasicMapDocumentation.docx document and the BasicMapExample.mp4 video.
