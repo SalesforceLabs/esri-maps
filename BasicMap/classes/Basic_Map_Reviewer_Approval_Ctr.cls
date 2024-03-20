@@ -114,6 +114,12 @@ public with sharing class Basic_Map_Reviewer_Approval_Ctr {
         return strURL;
     }
     
+    @AuraEnabled
+    public static String fetchMyDomainURL(){
+        String strmyDomain = 'https://'+DomainCreator.getOrgMyDomainHostname();
+        return strmyDomain;
+    }
+    
     public void updatePolygon(){
         try {
             Polygon objP = new Polygon();
